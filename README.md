@@ -1,2 +1,6 @@
 # data_engineer_portifolio
-This is a portifolio test
+Welcome to my data engineer portifolio.
+
+
+The first part of this portfolio will be creating and documenting the steps of my creation process for a project.
+
