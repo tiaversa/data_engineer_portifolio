@@ -4,8 +4,8 @@ import psycopg2
 from pathlib import Path
 
 conn = psycopg2.connect( 
-    database=os.environ.get('POSTGRES_DB'), user=os.environ.get('POSTGRES_USER'),  
-  password=os.environ.get('POSTGRES_PASSWORD'), host='localhost', port='5432'
+    database='portifolio_dwh', user='airflow',  
+  password='airflow', host='localhost', port='5432'
 ) 
 
 conn.autocommit = True

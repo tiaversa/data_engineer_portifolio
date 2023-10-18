@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    container_name: portifolio_postgres_db
+    logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+    environment:
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_USER: airflow
+      POSTGRES_DB: portifolio_dwh
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./docker_entry_point/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+  airflow:
+    build: .
+    depends_on:
+      - postgres
+    container_name: portifolio_airflow
+    environment:
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/portifolio_dwh
+      AIRFLOW__WEBSERVER__WEB_SERVER_MODE: Prod
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_USER: airflow
+      POSTGRES_DB: portifolio_dwh
+      GROUP_OR_COMMAND: dags
+    ports:
+      - "8080:8080"
+    command: pip install -r requirements.txt
+    volumes:
+      - ./external_volume:/airflow
