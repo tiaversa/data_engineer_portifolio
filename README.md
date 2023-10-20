@@ -1,5 +1,5 @@
 # data_engineer_portifolio
-Welcome to my data engineer portifolio.
+Welcome to my data engineer portfolio.
 This portfolio contains a PostgreSQL instance where the final Data Warehouse is built and an Airflow instance that creates certain pipelines to bring data into this Warehouse.
 To run the above project please follow the steps:
 - Clone this repository to your machine.
@@ -22,7 +22,7 @@ To run the above project please follow the steps:
   <summary>World Population</summary>
   
 ### World Population
-Begins with an export task with pulls a CSV file out of the UN website with a worldwide report of important metrics for world population, such as total population, the population born and deceased during the years, and so forth. The result of this CSV can be fond on schema world_population in their respective tables.
+Begins with an export task with pulls an Excel file out of the UN website with a worldwide report of important metrics for world population, such as total population, the population born and deceased during the years, and so forth. The result of this Excel can be found on schema world_population in their respective tables.
   
 </details>
 

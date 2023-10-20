@@ -13,12 +13,12 @@ dag = DAG(
     default_args={
         "start_date": datetime(2023, 10, 19),
     },
-    tags=["world_population", "csv"]
+    tags=["world_population", "excel"]
 )
 
-export_csv = PythonOperator(
-    task_id=f"export_csv",
-    python_callable=project_import.export_csv_file,
+export_excel = PythonOperator(
+    task_id=f"export_excel",
+    python_callable=project_import.export_excel_file,
     op_kwargs={
         "text":'hi'
     },
