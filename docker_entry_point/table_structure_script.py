@@ -3,6 +3,8 @@ import yaml
 import psycopg2 
 from pathlib import Path
 
+print("\n\n\nI got to this script\n\n\n")
+
 conn = psycopg2.connect( 
     database='portifolio_dwh', user='airflow',  
   password='airflow', host='localhost', port='5432'
