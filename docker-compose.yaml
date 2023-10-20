@@ -1,10 +1,10 @@
-
+# Code from https://airflow.apache.org/docs/apache-airflow/2.7.2/docker-compose.yaml
 ---
 version: '3.8'
 x-airflow-common:
   &airflow-common
   image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.7.2}
-  # build: .
+  build: .
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -37,23 +37,6 @@ x-airflow-common:
       condition: service_healthy
 
 services:
-  portfolio_postgres:
-    image: postgres:14
-    restart: always
-    container_name: portifolio_postgres_db
-    logging:
-          options:
-            max-size: 10m
-            max-file: "3"
-    environment:
-      POSTGRES_PASSWORD: portfolio
-      POSTGRES_USER: portfolio
-      POSTGRES_DB: portifolio_dwh
-    ports:
-      - "5433:5432"
-    volumes:
-      - ./docker_entry_point/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-
   postgres:
     image: postgres:13
     environment:
@@ -263,6 +246,23 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+# Back to my code
+  portfolio_postgres:
+    image: postgres:14
+    restart: always
+    container_name: portifolio_postgres_db
+    logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+    environment:
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_USER: portfolio
+      POSTGRES_DB: portifolio_dwh
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./docker_entry_point/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
 
 volumes:
   postgres-db-volume:
