@@ -9,7 +9,7 @@ import project_imports.world_population_import as project_import
 dag = DAG(
     "world_population_pipeline_dag",
     catchup=False,
-    schedule_interval="* 1 * * *",
+    schedule_interval="* 1 1 * *",
     default_args={
         "start_date": datetime(2023, 10, 19),
     },
@@ -19,8 +19,5 @@ dag = DAG(
 export_excel = PythonOperator(
     task_id=f"export_excel",
     python_callable=project_import.export_excel_file,
-    op_kwargs={
-        "text":'hi'
-    },
     dag=dag,
 )
