@@ -21,3 +21,10 @@ export_excel = PythonOperator(
     python_callable=project_import.export_excel_file,
     dag=dag,
 )
+
+load_into_postgres = PythonOperator(
+    task_id=f"load_into_postgres",
+    python_callable=project_import.load_into_postgres,
+    dag=dag,
+)
+export_excel >> load_into_postgres
