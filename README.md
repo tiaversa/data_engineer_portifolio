@@ -1,5 +1,6 @@
 # data_engineer_portifolio
 Welcome to my data engineer portfolio.
+This is a project underdevelopment to demonstrate my skills as a data engineer.
 This portfolio contains a PostgreSQL instance where the final Data Warehouse is built and an Airflow instance that creates certain pipelines to bring data into this Warehouse.
 To run the above project please follow the steps:
 - Clone this repository to your machine.
