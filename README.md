@@ -299,5 +299,42 @@ Overall, Parquet and Avro are better choices than CSV for storing large datasets
 CSV is a good choice for storing small datasets or for datasets that do not need to be processed quickly. CSV is also a good choice for datasets that need to be shared with other users who may not have access to Parquet or Avro readers.
 
 </details>
+<details>
+  <summary>Can you explain the difference between OLAP and OLTP and when to use each?</summary>
 
+## Can you explain the difference between OLAP and OLTP and when to use each?
+
+- OLTP:
+It's a process that has as priority transactional changes. Usually this is related to row based queries, being very fast for simple queries like insert, update and delete, and allowing multi-user experience and index for it's tables.
+- OLAP:
+It's a process that prioritize analitics, usually used for a business reporting, data mining, and complex analytical calculations. This process are there to analize big amount of multi dimentional data.
+
+For more info: https://www.youtube.com/watch?v=iw-5kFzIdgY
+
+
+</details>
+<details>
+  <summary>What is the difference between CTE, window function and Having Group By while dealing with duplicates?</summary>
+
+## What is the difference between CTE, window function and Having Group By while dealing with duplicates?
+
+CTE creates 
+
+Bard's response:
+https://g.co/bard/share/b1a141f116e6
+</details>
+
+<details>
+  <summary>What does cdc stands for and when to use it?</summary>
+
+## What does cdc stands for and when to use it?
+CDC
+Change Data Capture (CDC) is the process of recognizing when data has changed in source system so that a downstream system can take an action based on that change. 
+
+It’s a very good way to to move data from your transactional databases to your data warehouses or data lakes with minimal latency. It’s also a good way to setup a real time data pipeline where other processes, like stream processors, can listen for changes in data and take actions accordingly. 
+
+When an change (insert, update or delete) happens in the source, it create a kafka message which is sent to the target systems subscribde to this source and they will perform the necessary changes based on this kafka message.
+
+Great for ensuring that you have the same data across different databases. Also for stream processing based on this changesn and trigger asynchronous jobs.
+</details>
 </details>

@@ -10,9 +10,9 @@ import project_imports.world_population_import as project_import
 # world_population_file_url = Variable.get("world_population_file_url")
 world_population_file_url = 'https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_General/WPP2022_GEN_F01_DEMOGRAPHIC_INDICATORS_REV1.xlsx'
 dag = DAG(
-    "world_population_pipeline_dag",
+    "world_population_pipeline",
     catchup=False,
-    schedule_interval="* 1 1 * *",
+    schedule_interval="1 1 1 * *",
     default_args={
         "start_date": datetime(2023, 10, 19),
     },

@@ -61,10 +61,13 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - ${AIRFLOW_PROJ_DIR:-.}/tables_structure:/home/tables_structure
+      - ${AIRFLOW_PROJ_DIR:-.}/SQLTasks:/home/SQLTasks
     depends_on:
       - portfolio_postgres
     networks:
       - test
+
+
 # Code from https://airflow.apache.org/docs/apache-airflow/2.7.2/docker-compose.yaml
   postgres:
     image: postgres:13
