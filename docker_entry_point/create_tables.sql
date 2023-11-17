@@ -1,1 +1,2 @@
 CREATE SCHEMA IF NOT EXISTS world_population;
+CREATE SCHEMA IF NOT EXISTS sql_test;
