@@ -2,3 +2,4 @@ logs/
 # *.xlsx
 .env
 __pycache__/
+.pyc
