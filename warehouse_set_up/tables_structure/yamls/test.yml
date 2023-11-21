@@ -1,0 +1,16 @@
+version: 3
+file_name: 
+destination_schema: sql_test
+tables:
+   - name: test_table_format
+     fields:
+         - name: Index
+           type: int
+           column_name: index
+         - name: Info
+           type: varchar
+           column_name: info
+         - name: Created Date
+           type: timestamp default CURRENT_TIMESTAMP
+           column_name: create_date
+        

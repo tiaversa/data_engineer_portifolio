@@ -27,7 +27,7 @@ for filename in os.listdir(directory):
                     query = f'CREATE TABLE {schema}.{each_table["name"]}('
                     table_name = each_table['name']
                     for each_column in each_table['fields']:
-                        query = query + f'{each_column["column_name"]} varchar,'
+                        query = query + f'{each_column["column_name"]} {each_column["type"]},'
                     query = query[:-1] + ');'
                     cursor.execute(query) 
                     print(query)

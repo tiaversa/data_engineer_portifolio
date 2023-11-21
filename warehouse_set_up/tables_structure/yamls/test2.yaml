@@ -1,0 +1,70 @@
+version: 3
+file_name: 
+destination_schema: sql_test
+tables:
+   - name: product
+     fields:
+         - column_name: id_product
+           type: int
+         - column_name: product_sku
+           type: varchar(45)
+         - column_name: number_of_recipes
+           type: smallint
+         - column_name: number_of_meals
+           type: smallint
+         - column_name: fk_product_family
+           type: int
+   - name: product_family
+     fields:
+         - column_name: id_product_family
+           type: int
+         - column_name: product_family_handle
+           type: varchar(45)
+   - name: order
+     fields:
+         - column_name: id_order
+           type: int
+         - column_name: order_number
+           type: varchar(45)
+         - column_name: delivery_date
+           type: timestamp
+         - column_name: purchase_price
+           type: numeric(8,2)
+         - column_name: created_at
+           type: timestamp default CURRENT_TIMESTAMP
+         - column_name: updated_at
+           type: timestamp
+         - column_name: fk_subscription
+           type: int
+         - column_name: fk_product
+           type: int
+   - name: subscription
+     fields:
+         - column_name: id_subscription
+           type: int
+         - column_name: status
+           type: varchar(45)
+         - column_name: created_at
+           type: timestamp default CURRENT_TIMESTAMP
+         - column_name: updated_at
+           type: timestamp
+         - column_name: fk_customer
+           type: int
+         - column_name: fk_product_subscribed_to
+           type: int
+   - name: customer
+     fields:
+         - column_name: id_customer
+           type: int
+         - column_name: first_name
+           type: varchar(45)
+         - column_name: last_name
+           type: varchar(45)
+         - column_name: email
+           type: varchar(45)
+         - column_name: password
+           type: varchar(45)
+         - column_name: created_at
+           type: timestamp default CURRENT_TIMESTAMP
+         - column_name: updated_at
+           type: timestamp
