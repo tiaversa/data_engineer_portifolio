@@ -7,18 +7,18 @@ on c.id_customer = s.fk_customer
 left join sql_test.product p
 on s.fk_product_subscribed_to = p.id_product
 where c.email = 'fancygirls83@hotmail.com'
-and s.status = 'active';
+and s.status = 'active'
+order by 1;
 -- 2. Get all the customers that have an active subscription to a product that corresponds to a product family with product_family_handle = ‘classic-box’ 
-select c.id_customer
-from sql_test.customer c
-join sql_test.subscription s
-on c.id_customer = s.fk_customer
+select s.fk_customer as customer
+from sql_test.subscription s
 join sql_test.product p
 on s.fk_product_subscribed_to = p.id_product
 left join sql_test.product_family pf
 on p.fk_product_family = pf.id_product_family
 where s.status = 'active'
-and pf.product_family_handle = 'classic-box';
+and pf.product_family_handle = 'classic-box'
+order by 1;
 -- 3. Get all the paused subscriptions that have only received one box. 
 select s.id_subscription
 from (
