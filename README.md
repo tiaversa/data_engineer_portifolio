@@ -336,5 +336,16 @@ It’s a very good way to to move data from your transactional databases to your
 When an change (insert, update or delete) happens in the source, it create a kafka message which is sent to the target systems subscribde to this source and they will perform the necessary changes based on this kafka message.
 
 Great for ensuring that you have the same data across different databases. Also for stream processing based on this changesn and trigger asynchronous jobs.
+
+.env
+AWS_ACCESS_KEY_ID = AKIATP4HXHU3AOHILFOD
+AWS_SECRET_ACCESS_KEY = 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
+POSTGRES_PASSWORD = portfolio
+POSTGRES_USER = portfolio
+POSTGRES_DB = portfolio_dwh
+POSTGRES_PORT = 5432
+POSTGRES_HOST = portifolio_postgres_db
+AIRFLOW_UID=50000
+AIRFLOW_GID=0
 </details>
 </details>
