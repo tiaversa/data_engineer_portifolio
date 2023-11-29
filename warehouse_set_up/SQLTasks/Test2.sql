@@ -1,3 +1,4 @@
+-- Structure for this task created in test2.yaml file.
 -- Write SQL statements to retrieve the following information: 
 -- 1. For the customer with email address ‘fancygirl83@hotmail.com’ show all product_skus the customer has an active subscription for. 
 select p.product_sku
@@ -10,6 +11,7 @@ where c.email = 'fancygirls83@hotmail.com'
 and s.status = 'active'
 order by 1;
 -- 2. Get all the customers that have an active subscription to a product that corresponds to a product family with product_family_handle = ‘classic-box’ 
+--maybe needs connection to orders?
 select s.fk_customer as customer
 from sql_test.subscription s
 join sql_test.product p
@@ -20,6 +22,7 @@ where s.status = 'active'
 and pf.product_family_handle = 'classic-box'
 order by 1;
 -- 3. Get all the paused subscriptions that have only received one box. 
+-- can be re-done with a having clause
 select s.id_subscription
 from (
     select count(fk_subscription) as count_subscription, fk_subscription 
@@ -31,9 +34,12 @@ on s.id_subscription = o.fk_subscription
 where s.status = 'paused'
 and o.count_subscription = 1;
 -- 4. How many subscriptions do our customers have on average? 
+-- Possible questions: For all subscriptions or just what is presently active?
 select avg(subscription_count) 
 from (
-    select count(fk_customer) as subscription_count, fk_customer from sql_test.subscription
+    select count(fk_customer) as subscription_count, fk_customer 
+    from sql_test.subscription
+    where s.status = 'active'
     group by fk_customer
 ) x ;
 -- 5. How many customers have ordered more than one product? 
